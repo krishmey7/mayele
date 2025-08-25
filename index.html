@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayele - Plateforme d'Experts et E-books</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #256ff7;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #ffb800;
+            --gray: #6c757d;
+            --light-bg: #f9fafb;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background: white;
+            color: var(--dark);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #ccc;
+            color: #999;
+            font-size: 12px;
+            text-align: center;
+            padding: 5px;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            margin-right: 15px;
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            border: 2px solid var(--accent);
+        }
+        
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--accent);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            background: linear-gradient(to right, rgba(67, 97, 238, 0.1) 0%, rgba(58, 12, 163, 0.1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .hero-text {
+            flex: 1;
+            padding-right: 30px;
+        }
+        
+        .hero-visual {
+            flex: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 40px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .phone-showcase {
+            position: relative;
+            width: 300px;
+            max-width: 100%;
+        }
+        
+        .phone-frame {
+            position: relative;
+            width: 100%;
+            padding-top: 207%; /* Ratio d'un téléphone en portrait (9:19.5) */
+            background: url('https://placehold.co/300x600/e6e6e6/666666?text=📱') no-repeat center;
+            background-size: contain;
+            z-index: 2;
+        }
+        
+        .phone-screen {
+            position: absolute;
+            width: 87%;
+            height: 94%;
+            top: 3%;
+            left: 6.5%;
+            border-radius: 12px;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .screen-slides {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s ease;
+            background-size: cover;
+            background-position: top center;
+        }
+        
+        .slide.active {
+            opacity: 1;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+        
+        .feature-img-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .feature-img {
+            width: auto;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Services Slider */
+        .services-slider {
+            margin: 60px 0;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: 400px;
+        }
+        
+        .slider-track {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            transition: transform 0.8s ease;
+        }
+        
+        .slider-slide {
+            width: 33.33%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            padding: 30px;
+            position: relative;
+        }
+        
+        .slider-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+        }
+        
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 600px;
+        }
+        
+        .slide-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .slider-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            z-index: 5;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            margin: 0 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .slider-dot.active {
+            background: white;
+        }
+        
+        .slider-arrows {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 20px;
+            z-index: 5;
+        }
+        
+        .slider-arrow {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .slider-arrow:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* App Screenshots Section - Format Portrait */
+        .app-screenshots {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .screenshot-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .screenshot-item {
+            width: 250px;
+            text-align: center;
+        }
+        
+        .screenshot-frame {
+            width: 100%;
+            padding-top: 207%; /* Ratio d'un téléphone en portrait */
+            background: url('https://placehold.co/300x600/e6e6e6/666666?text=📱') no-repeat center;
+            background-size: contain;
+            position: relative;
+            margin: 0 auto;
+        }
+        
+        .screenshot-img {
+            position: absolute;
+            width: 87%;
+            height: 94%;
+            top: 3%;
+            left: 6.5%;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        
+        .screenshot-caption {
+            margin-top: 15px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            padding: 80px 0;
+            background: linear-gradient(rgba(67, 97, 238, 0.05) 0%, rgba(58, 12, 163, 0.1) 100%);
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+        
+        /* Account Types */
+        .account-types {
+            padding: 80px 0;
+        }
+        
+        .accounts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .account {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .account:hover {
+            transform: translateY(-10px);
+        }
+        
+        .account-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .account-body {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .account-body ul {
+            list-style: none;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+        .account-body ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .account-body ul li i {
+            color: var(--success);
+            margin-right: 10px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: linear-gradient(rgba(67, 97, 238, 0.05) 0%, rgba(58, 12, 163, 0.1) 100%);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .testimonial {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .testimonial-content {
+            margin-bottom: 20px;
+            font-style: italic;
+            color: var(--gray);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+        }
+        
+        .btn-light {
+            background: white;
+            color: var(--primary);
+            border: 2px solid white;
+        }
+        
+        .btn-light:hover {
+            background: transparent;
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            color: white;
+            text-decoration: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile Navigation */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+            display: block;
+            }
+            
+            .hero-content {
+                flex-direction: column;
+            }
+            
+            .hero-text {
+                padding-right: 0;
+                text-align: center;
+                margin-bottom: 50px;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .phone-showcase {
+                width: 250px;
+            }
+            
+            .services-slider {
+                height: 350px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .steps {
+                flex-direction: column;
+            }
+            
+            .step {
+                margin-bottom: 40px;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .phone-showcase {
+                width: 200px;
+            }
+            
+            .services-slider {
+                height: 300px;
+            }
+            
+            .slide-content h3 {
+                font-size: 1.5rem;
+            }
+            
+            .screenshot-item {
+                width: 200px;
+            }
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background: white;
+            z-index: 1000;
+            padding: 80px 30px 30px;
+            transition: right 0.3s ease;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .mobile-menu ul {
+            list-style: none;
+            margin-top: 30px;
+        }
+        
+        .mobile-menu ul li {
+            margin-bottom: 20px;
+        }
+        
+        .mobile-menu ul li a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.2rem;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Section anchors adjustment for fixed header */
+        .section-anchor {
+            display: block;
+            position: relative;
+            top: -80px;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo-container">
+                    <img src="screenshots/logo.jpg" alt="Logo Mayele" class="logo-img">
+                    <div class="logo">
+                        <span>Mayele</span>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#application">Application</a></li>
+                    <li><a href="#fonctionnement">Comment ça marche</a></li>
+                    <li><a href="#comptes">Comptes</a></li>
+                    <li><a href="#temoignages">Témoignages</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="#" class="btn btn-outline">Téléchargez l'appli</a>
+                    <!--<a href="#" class="btn btn-primary">Inscription</a>-->
+                </div>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <button class="close-menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="logo-container">
+            <img src="screenshots/logo.jpg" alt="Logo Mayele" class="logo-img">
+            <div class="logo">
+                <span>Mayele</span>
+            </div>
+        </div>
+        <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#application">Application</a></li>
+            <li><a href="#fonctionnement">Comment ça marche</a></li>
+            <li><a href="#comptes">Comptes</a></li>
+            <li><a href="#temoignages">Témoignages</a></li>
+            <li><a href="#">Connexion</a></li>
+            <li><a href="#">Inscription</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <span class="section-anchor" id="accueil-anchor"></span>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Des experts à votre service, des connaissances à portée de main</h1>
+                    <p>Mayele relie ceux qui cherchent des solutions à ceux qui possèdent l'expertise, tout en offrant une bibliothèque d'e-books pour apprendre à son rythme.</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-primary">Trouver un Expert</a>
+                        <a href="#" class="btn btn-outline">Découvrir les E-books</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="phone-showcase">
+                        <div class="phone-frame"></div>
+                        <div class="phone-screen">
+                            <div class="screen-slides">
+                                <!-- Remplacez ces divs par vos images -->
+                                <div class="slide active" style="background-image: url('screenshots/14.jpg');"></div>
+                                <div class="slide" style="background-image: url('screenshots/15.jpg');"></div>
+                                <div class="slide" style="background-image: url('screenshots/16.jpg');"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="services">
+        <span class="section-anchor" id="services-anchor"></span>
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos services</h2>
+                <p>Découvrez comment Mayele peut vous aider à résoudre vos problèmes, partager votre expertise ou vendre vos connaissances.</p>
+            </div>
+
+            <!-- Nouveau slider pour les services (paysage) -->
+            <div class="services-slider">
+                <div class="slider-track">
+                    <div class="slider-slide" style="background-image: url('screenshots/2.jpg');">
+                        <div class="slide-content">
+                            <h3>Trouver des Experts</h3>
+                            <p>Connectez-vous avec des professionnels qualifiés prêts à vous aider à résoudre vos problèmes.</p>
+                        </div>
+                    </div>
+                    <div class="slider-slide" style="background-image: url('screenshots/3.jpg');">
+                        <div class="slide-content">
+                            <h3>Acheter des E-books</h3>
+                            <p>Accédez à une bibliothèque complète de ressources pour apprendre à votre rythme.</p>
+                        </div>
+                    </div>
+                    <div class="slider-slide" style="background-image: url('screenshots/1.jpg');">
+                        <div class="slide-content">
+                            <h3>Devenir Expert</h3>
+                            <p>Partagez vos compétences et aidez ceux qui ont besoin de votre expertise.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-arrows">
+                    <div class="slider-arrow prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="slider-arrow next">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+                <div class="slider-nav">
+                    <div class="slider-dot active"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                </div>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-img-container">
+                        <!-- Remplacez par votre image -->
+                        <img src="screenshots/2.jpg" alt="Trouver un expert sur Mayele" class="feature-img">
+                    </div>
+                    <h3>Trouver des Experts</h3>
+                    <p>Connectez-vous avec des professionnels qualifiés prêts à vous aider à résoudre vos problèmes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-img-container">
+                        <!-- Remplacez par votre image -->
+                        <img src="screenshots/3.jpg" alt="Acheter un e-book sur Mayele" class="feature-img">
+                    </div>
+                    <h3>Acheter des E-books</h3>
+                    <p>Accédez à une bibliothèque complète de ressources pour apprendre à votre rythme.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-img-container">
+                        <!-- Remplacez par votre image -->
+                        <img src="screenshots/1.jpg" alt="Devenir expert sur Mayele" class="feature-img">
+                    </div>
+                    <h3>Devenir Expert</h3>
+                    <p>Partagez vos compétences et aidez ceux qui ont besoin de votre expertise.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Screenshots Section - Format Portrait -->
+    <section class="app-screenshots" id="application">
+        <span class="section-anchor" id="application-anchor"></span>
+        <div class="container">
+            <div class="section-title">
+                <h2>Découvrez l'application Mayele</h2>
+                <p>Une expérience utilisateur intuitive et fluide sur mobile</p>
+            </div>
+            <div class="screenshot-container">
+                <div class="screenshot-item">
+                    <div class="screenshot-frame">
+                        <img src="screenshots/13.jpg" alt="Interface de consultation Mayele" class="screenshot-img">
+                    </div>
+                    <p class="screenshot-caption">Interface des commandes</p>
+                </div>
+                <div class="screenshot-item">
+                    <div class="screenshot-frame">
+                        <img src="screenshots/11.jpg" alt="Bibliothèque Mayele" class="screenshot-img">
+                    </div>
+                    <p class="screenshot-caption">Bibliothèque d'e-books</p>
+                </div>
+                <div class="screenshot-item">
+                    <div class="screenshot-frame">
+                        <img src="screenshots/12.jpg" alt="Tableau de bord expert Mayele" class="screenshot-img">
+                    </div>
+                    <p class="screenshot-caption">Tableau de bord expert</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="fonctionnement">
+        <span class="section-anchor" id="fonctionnement-anchor"></span>
+        <div class="container">
+            <div class="section-title">
+                <h2>Comment ça marche</h2>
+                <p>Quelques étapes simples pour commencer à utiliser Mayele</p>
+            </div>
+            
+            <!-- Galerie d'images supplémentaires en format portrait -->
+            <div class="screenshot-container">
+                <div class="screenshot-item">
+                    <div class="screenshot-frame">
+                        <img src="screenshots/7.jpg"Étape 1 - Création de compte" class="screenshot-img">
+                    </div>
+                    <p class="screenshot-caption">Étape 1 - Création de compte</p>
+                </div>
+                <div class="screenshot-item">
+                    <div class="screenshot-frame">
+                        <img src="screenshots/8.jpg" alt="Étape 2 - Completion du profil" class="screenshot-img">
+                    </div>
+                    <p class="screenshot-caption">Étape 2 - Completion du profil</p>
+                </div>
+                <div class="screenshot-item">
+                    <div class="screenshot-frame">
+                        <img src="screenshots/10.jpg" alt="Étape 3 - Exploration" class="screenshot-img">
+                    </div>
+                    <p class="screenshot-caption">Étape 3 - Exploration</p>
+                </div>
+                <div class="screenshot-item">
+                    <div class="screenshot-frame">
+                        <img src="screenshots/9.jpg" alt="Étape 4 - Interaction" class="screenshot-img">
+                    </div>
+                    <p class="screenshot-caption">Étape 4 - Interaction</p>
+                </div>
+            </div>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Créez un compte</h3>
+                    <p>Choisissez le type de compte qui correspond à vos besoins.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Completez votre profil</h3>
+                    <p>Ajoutez vos informations, compétences ou besoins.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Explorez et connectez</h3>
+                    <p>Trouvez des experts, des e-books ou des clients.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Commencez à interagir</h3>
+                    <p>Demandez de l'aide, partagez votre expertise ou vendez vos e-books.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Account Types -->
+    <section class="account-types" id="comptes">
+        <span class="section-anchor" id="comptes-anchor"></span>
+        <div class="container">
+            <div class="section-title">
+                <h2>Types de comptes</h2>
+                <p>Choisissez le compte qui correspond à vos besoins</p>
+            </div>
+            <div class="accounts">
+                <div class="account">
+                    <div class="account-header">
+                        <h3>Compte Client</h3>
+                    </div>
+                    <div class="account-body">
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Trouvez des experts qualifiés</li>
+                            <li><i class="fas fa-check-circle"></i> Achetez des e-books pertinents</li>
+                            <li><i class="fas fa-check-circle"></i> Planifiez des consultations</li>
+                            <li><i class="fas fa-check-circle"></i> Évaluez les experts</li>
+                            <li><i class="fas fa-check-circle"></i> Support prioritaire</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary">Créer un compte client</a>
+                    </div>
+                </div>
+                <div class="account">
+                    <div class="account-header">
+                        <h3>Compte Expert</h3>
+                    </div>
+                    <div class="account-body">
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Proposez vos compétences</li>
+                            <li><i class="fas fa-check-circle"></i> Fixez vos propres tarifs</li>
+                            <li><i class="fas fa-check-circle"></i> Gérez votre calendrier</li>
+                            <li><i class="fas fa-check-circle"></i> Recevez des avis clients</li>
+                            <li><i class="fas fa-check-circle"></i> Outils de communication</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary">Créer un compte expert</a>
+                    </div>
+                </div>
+                <div class="account">
+                    <div class="account-header">
+                        <h3>Compte Vendeur</h3>
+                    </div>
+                    <div class="account-body">
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Mettez en vente vos e-books</li>
+                            <li><i class="fas fa-check-circle"></i> Fixez vos prix et promotions</li>
+                            <li><i class="fas fa-check-circle"></i> Suivi des ventes en temps réel</li>
+                            <li><i class="fas fa-check-circle"></i> Analytics de performances</li>
+                            <li><i class="fas fa-check-circle"></i> Paiements sécurisés</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary">Créer un compte vendeur</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="temoignages">
+        <span class="section-anchor" id="temoignages-anchor"></span>
+        <div class="container">
+            <div class="section-title">
+                <h2>Ce que disent nos utilisateurs</h2>
+                <p>Découvrez les expériences de ceux qui ont déjà rejoint la communauté Mayele</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        "Grâce à Mayele, j'ai trouvé un expert qui m'a aidé à résoudre mon problème technique en moins de 24h. Très professionnel et compétent !"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">M</div>
+                        <div>
+                            <h4>Marie L.</h4>
+                            <p>Client</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        "En tant que consultant, Mayele m'a permis de développer mon activité et de trouver de nouveaux clients. La plateforme est intuitive et bien conçue."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">P</div>
+                        <div>
+                            <h4>Pierre D.</h4>
+                            <p>Expert</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        "J'ai pu monétiser mes connaissances en publiant mes e-books sur Mayele. Les outils de suivi et de analytics sont très complets."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">S</div>
+                        <div>
+                            <h4>Sophie M.</h4>
+                            <p>Vendeuse</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Prêt à commencer votre voyage?</h2>
+            <p>Rejoignez notre communauté et découvrez comment Mayele peut transformer votre façon de trouver de l'aide, partager des connaissances ou vendre du contenu.</p>
+            <a href="#" class="btn btn-light">Téléchargez Mayele</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Mayele</h3>
+                    <p>La plateforme qui connecte les chercheurs de solutions avec les détenteurs de savoir.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Liens rapides</h3>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#application">Application</a></li>
+                        <li><a href="#fonctionnement">Comment ça marche</a></li>
+                        <li><a href="#comptes">Comptes</a></li>
+                        <li><a href="#temoignages">Témoignages</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Centre d'aide</a></li>
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Inscrivez-vous pour recevoir nos actualités et offres spéciales.</p>
+                    <form>
+                        <input type="email" placeholder="Votre email" style="padding: 10px; width: 100%; margin-bottom: 10px; border-radius: 5px; border: none;">
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">S'abonner</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Mayele. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+        <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const closeMenuBtn = document.querySelector('.close-menu');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close mobile menu when clicking on a link
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        // Phone screen slider
+        const phoneSlides = document.querySelectorAll('.slide');
+        let currentPhoneSlide = 0;
+        
+        function showPhoneSlide(index) {
+            phoneSlides.forEach(slide => slide.classList.remove('active'));
+            phoneSlides[index].classList.add('active');
+        }
+        
+        function nextPhoneSlide() {
+            currentPhoneSlide = (currentPhoneSlide + 1) % phoneSlides.length;
+            showPhoneSlide(currentPhoneSlide);
+        }
+        
+        // Start phone slideshow
+        setInterval(nextPhoneSlide, 3000);
+        
+        // Services Slider functionality
+        const track = document.querySelector('.slider-track');
+        const slides = document.querySelectorAll('.slider-slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        const nextButton = document.querySelector('.slider-arrow.next');
+        const prevButton = document.querySelector('.slider-arrow.prev');
+        
+        let currentIndex = 0;
+        let autoSlideInterval;
+        
+        // Function to move to a specific slide
+        function moveToSlide(index) {
+            if (index < 0) index = slides.length - 1;
+            if (index >= slides.length) index = 0;
+            
+            track.style.transform = `translateX(-${index * 33.33}%)`;
+            
+            // Update dots
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+            
+            currentIndex = index;
+            
+            // Reset auto-slide timer
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(() => {
+                moveToSlide(currentIndex + 1);
+            }, 5000);
+        }
+        
+        // Event listeners for arrows
+        nextButton.addEventListener('click', () => {
+            moveToSlide(currentIndex + 1);
+        });
+        
+        prevButton.addEventListener('click', () => {
+            moveToSlide(currentIndex - 1);
+        });
+        
+        // Event listeners for dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                moveToSlide(index);
+            });
+        });
+        
+        // Start auto-slide
+        autoSlideInterval = setInterval(() => {
+            moveToSlide(currentIndex + 1);
+        }, 5000);
+        
+        // Pause auto-slide on hover
+        const slider = document.querySelector('.services-slider');
+        slider.addEventListener('mouseenter', () => {
+            clearInterval(autoSlideInterval);
+        });
+        
+        slider.addEventListener('mouseleave', () => {
+            autoSlideInterval = setInterval(() => {
+                moveToSlide(currentIndex + 1);
+            }, 5000);
+        });
+        
+        // Animation for elements on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.feature-card, .account, .testimonial, .screenshot-item');
+            
+            function checkScroll() {
+                animatedElements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.style.opacity = 1;
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            }
+            
+            // Initialize opacity for animation
+            animatedElements.forEach(element => {
+                element.style.opacity = 0;
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            window.addEventListener('scroll', checkScroll);
+            checkScroll(); // Check on initial load
+            
+            // Smooth scrolling for anchor links with offset for fixed header
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerOffset = 80;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
