@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditions Générales d'Utilisation - Mayele</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #4cc9f0;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #ffb800;
+            --gray: #6c757d;
+            --light-bg: #f9fafb;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background: white;
+            color: var(--dark);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #ccc;
+            color: #999;
+            font-size: 12px;
+            text-align: center;
+            padding: 5px;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            margin-right: 15px;
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            border: 2px solid var(--accent);
+        }
+        
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--accent);
+        }
+        
+        /* Terms Hero Section */
+        .terms-hero {
+            padding: 80px 0;
+            background: linear-gradient(to right, rgba(67, 97, 238, 0.1) 0%, rgba(58, 12, 163, 0.1) 100%);
+            text-align: center;
+        }
+        
+        .terms-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .terms-hero p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Terms Content */
+        .terms-content {
+            padding: 60px 0;
+            background: white;
+        }
+        
+        .terms-section {
+            margin-bottom: 50px;
+        }
+        
+        .terms-section h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light);
+        }
+        
+        .terms-section h3 {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin: 25px 0 15px;
+        }
+        
+        .terms-section p {
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+        
+        .terms-section ul {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        .terms-section li {
+            margin-bottom: 10px;
+            color: var(--gray);
+        }
+        
+        .terms-section .highlight {
+            background: var(--light);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+            margin: 20px 0;
+        }
+        
+        .update-date {
+            background: var(--light);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 30px 0;
+            font-style: italic;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 40px 0;
+            background: linear-gradient(rgba(67, 97, 238, 0.05) 0%, rgba(58, 12, 163, 0.1) 100%);
+            text-align: center;
+        }
+        
+        .contact-section h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .contact-email {
+            display: inline-flex;
+            align-items: center;
+            background: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-email:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .contact-email i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            color: white;
+            text-decoration: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .terms-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .terms-section h2 {
+                font-size: 1.7rem;
+            }
+            
+            .terms-section h3 {
+                font-size: 1.3rem;
+            }
+            
+            .terms-section ul {
+                padding-left: 20px;
+            }
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        @media (max-width: 992px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background: white;
+            z-index: 1000;
+            padding: 80px 30px 30px;
+            transition: right 0.3s ease;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .mobile-menu ul {
+            list-style: none;
+            margin-top: 30px;
+        }
+        
+        .mobile-menu ul li {
+            margin-bottom: 20px;
+        }
+        
+        .mobile-menu ul li a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.2rem;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo-container">
+                    <img src="screenshots/logo.jpg" alt="Logo Mayele" class="logo-img">
+                    <div class="logo">
+                        <span>Mayele</span>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#application">Application</a></li>
+                    <li><a href="index.html#fonctionnement">Comment ça marche</a></li>
+                    <li><a href="index.html#comptes">Comptes</a></li>
+                    <li><a href="index.html#temoignages">Témoignages</a></li>
+                </ul>
+                <a href="index.html" class="btn btn-outline">Retour à l'accueil</a>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <button class="close-menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="logo-container">
+            <img src="screenshots/logo.jpg" alt="Logo Mayele" class="logo-img">
+            <div class="logo">
+                <span>Mayele</span>
+            </div>
+        </div>
+        <ul>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+        </ul>
+    </div>
+
+    <!-- Terms Hero Section -->
+    <section class="terms-hero">
+        <div class="container">
+            <h1>Conditions Générales d'Utilisation</h1>
+            <p>Dernière mise à jour : 27 Août 2025</p>
+        </div>
+    </section>
+
+    <!-- Terms Content -->
+    <section class="terms-content">
+        <div class="container">
+            <div class="terms-section">
+                <h2>1. Objet</h2>
+                <p>Mayele est une plateforme permettant aux clients de contacter directement des experts/freelances pour l'achat de services rémunérés. Ces CGU définissent les droits et obligations de chaque partie.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>2. Accès à la plateforme</h2>
+                <p>L'accès à Mayele nécessite la création d'un compte personnel.</p>
+                <p>Vous garantissez que les informations fournies sont exactes et à jour.</p>
+                <p>Chaque utilisateur est responsable de la confidentialité de son compte et mot de passe.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>3. Fonctionnement des services</h2>
+                
+                <h3>3.1 Mise en relation directe</h3>
+                <p>Les clients contactent directement un expert pour demander un service.</p>
+                <p>L'expert peut accepter ou refuser la demande selon sa disponibilité et ses compétences.</p>
+                
+                <h3>3.2 Paiements et commissions</h3>
+                <p>Les paiements effectués par le client sont d'abord retenus par la plateforme (compte séquestre).</p>
+                <p>Mayele prélève une commission sur chaque transaction selon le barème en vigueur.</p>
+                <p>Une fois le service livré et validé par le client, le montant net est transféré à l'expert.</p>
+                
+                <h3>3.3 Remboursements</h3>
+                <p>Les clients peuvent demander un remboursement en cas de non-livraison ou de non-conformité du service.</p>
+                <p>Mayele se réserve le droit de valider ou refuser la demande selon les preuves fournies par les deux parties.</p>
+                <p>Les remboursements sont traités via le même moyen de paiement utilisé lors de la transaction, dans un délai indiqué par la plateforme.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>4. Obligations des utilisateurs</h2>
+                
+                <h3>4.1 Clients</h3>
+                <ul>
+                    <li>Fournir des informations exactes sur le service demandé et respecter les paiements convenus.</li>
+                    <li>Ne pas utiliser la plateforme pour des activités illégales ou frauduleuses.</li>
+                </ul>
+                
+                <h3>4.2 Experts</h3>
+                <ul>
+                    <li>Fournir les services conformément aux demandes et aux délais convenus.</li>
+                    <li>Fournir des informations exactes sur leurs compétences et qualifications.</li>
+                    <li>Respecter les règles de conduite et les droits des clients.</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>5. Responsabilités</h2>
+                <p>Mayele agit en tant qu'intermédiaire et n'est pas partie contractante directe entre clients et experts.</p>
+                <p>La plateforme ne garantit pas la qualité des services fournis ni la solvabilité des clients.</p>
+                <p>Mayele ne peut être tenu responsable en cas de litige entre utilisateurs, sauf si la plateforme a manqué à ses obligations de traitement des paiements ou de sécurité.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>6. Gestion des litiges</h2>
+                <p>Tout litige relatif à un service doit être signalé via la messagerie interne de Mayele.</p>
+                <p>La plateforme peut intervenir pour faciliter la résolution mais ne prend pas de décision juridique contraignante.</p>
+                <p>En cas de conflit persistant, les parties peuvent se tourner vers les voies légales compétentes.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>7. Propriété intellectuelle</h2>
+                <p>Les contenus créés par les utilisateurs (textes, images, vidéos, fichiers, services livrés) restent la propriété intellectuelle de l'utilisateur.</p>
+                <p>Mayele peut utiliser ces contenus uniquement pour :</p>
+                <ul>
+                    <li>Afficher le profil ou portfolio de l'expert sur la plateforme.</li>
+                    <li>Promouvoir ses services (ex : exemples anonymisés de travaux).</li>
+                </ul>
+                <p>Tous les autres contenus de Mayele (interface, logos, code, contenus promotionnels) restent la propriété exclusive de Mayele.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>8. Données personnelles</h2>
+                <p>Les données personnelles des utilisateurs sont collectées et traitées conformément à notre Politique de Confidentialité.</p>
+                <p>Ces données peuvent être utilisées pour gérer les paiements, litiges et remboursements.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>9. Suspension ou suppression de compte</h2>
+                <p>Mayele se réserve le droit de suspendre ou supprimer un compte en cas de :</p>
+                <ul>
+                    <li>Violation des présentes CGU.</li>
+                    <li>Comportement frauduleux ou illégal.</li>
+                    <li>Non-respect des obligations financières.</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>10. Modification des CGU</h2>
+                <p>Mayele peut modifier ces CGU à tout moment.</p>
+                <p>Les modifications seront publiées dans l'application. L'utilisation continue de Mayele après modification vaut acceptation des nouvelles conditions.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>11. Protection des contenus numériques (ebooks, documents)</h2>
+                <p>Certains services et contenus proposés sur Mayele incluent des fichiers numériques protégés (ex : ebooks, documents, fichiers multimédias).</p>
+                <p>Ces contenus sont téléchargés dans un dossier privé de l'application, inaccessible depuis l'extérieur.</p>
+                <p>Le lecteur intégré de l'application empêche toute capture d'écran ou enregistrement non autorisé.</p>
+                <p>L'utilisateur s'engage à ne pas tenter de copier, partager ou distribuer ces contenus en dehors de l'application.</p>
+                <p>Ces contenus restent la propriété intellectuelle de l'auteur/fournisseur, même après téléchargement.</p>
+                <p>Toute violation de ces règles peut entraîner la suspension ou la suppression du compte et, si nécessaire, des poursuites légales.</p>
+            </div>
+
+            <div class="update-date">
+                <p>Dernière mise à jour : 27 Août 2025</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h3>Pour toute question concernant les CGU</h3>
+            <a href="mailto:mayelecorporation@gmail.com" class="contact-email">
+                <i class="fas fa-envelope"></i> mayelecorporation@gmail.com
+            </a>
+        </div>
+    </section>
+
+      <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Mayele</h3>
+                    <p>La plateforme qui connecte les chercheurs de solutions avec les détenteurs de savoir.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Liens rapides</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#application">Application</a></li>
+                        <li><a href="index.html#fonctionnement">Comment ça marche</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Informations légales</h3>
+                    <ul>
+                        <li><a href="cgu.html">Conditions d'utilisation</a></li>
+                        <li><a href="confidentialite.html">Politique de confidentialité</a></li>
+                        <li><a href="cookies.html">Politique des cookies</a></li>
+                        <li><a href="mentions-legales.html">Mentions légales</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Mayele. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+  
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const closeMenuBtn = document.querySelector('.close-menu');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close mobile menu when clicking on a link
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+    </script>
+</body>
+</html>
